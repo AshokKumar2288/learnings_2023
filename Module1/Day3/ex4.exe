@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Not Valid\n");
+        return 0;
+    }
+
+    int smallestDigit, largestDigit;
+    int number, digit;
+
+    // Initialize smallestDigit and largestDigit with the first number
+    printf("Enter number 1: ");
+    scanf("%d", &number);
+    smallestDigit = largestDigit = number % 10;
+
+    for (int i = 2; i <= n; i++) {
+        printf("Enter number %d: ", i);
+        scanf("%d", &number);
+
+        // Find the smallest and largest digit in the current number
+        while (number != 0) {
+            digit = number % 10;
+            if (digit < smallestDigit) {
+                smallestDigit = digit;
+            }
+            if (digit > largestDigit) {
+                largestDigit = digit;
+            }
+            number /= 10;
+        }
+    }
+
+    if (smallestDigit == largestDigit) {
+        printf("Not Valid\n");
+    } else {
+        printf("Smallest Digit: %d\n", smallestDigit);
+        printf("Largest Digit: %d\n", largestDigit);
+    }
+
+    return 0;
+}
