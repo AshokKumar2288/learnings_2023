@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int findLargestAfterDeletion(int number) {
+    int largest = 0;
+
+    for (int i = 0; i < 4; i++) {
+        int divisor = 1;
+        for (int j = 0; j < i; j++) {
+            divisor *= 10;
+        }
+
+        int tempNumber = number / (divisor * 10) * divisor + number % divisor;
+
+        if (tempNumber > largest) {
+            largest = tempNumber;
+        }
+    }
+
+    return largest;
+}
+
+int main() {
+    int number;
+    printf("Enter a 4-digit number: ");
+    scanf("%d", &number);
+
+    int largestAfterDeletion = findLargestAfterDeletion(number);
+    printf("Largest number after deleting a single digit: %d\n", largestAfterDeletion);
+
+    return 0;
+}
